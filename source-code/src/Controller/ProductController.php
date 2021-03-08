@@ -42,6 +42,8 @@ class ProductController
         }
     }
 
+    /***        show book-list limit    */
+
     public function addBook(){
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $authors = $this->authorModel->getAllAuthors();
@@ -57,6 +59,9 @@ class ProductController
             $quantity = (int)$_POST['quantity'];
             $publicationDate = $_POST['date_of_publication'];
             $priceSale = (int)$_POST['price_sale'];
+            $pageNumber = (int)$_POST['page_number'];
+            $description = $_POST['description'];
+            $updateDate = $_POST['update_date'];
             $path = "images/";
             $tmpName = $_FILES['image']['tmp_name'];
             $imageName = $_FILES['image']['name'];
@@ -100,26 +105,9 @@ class ProductController
                 }
                 $this->productModel->updateBook($bookId,$isbn,$bookName,$description,$pageNumber,$authorId,$categoryId,$publisherId,$quantity,$publicationDate,$updateDate,$priceSale,$imageName);
             }
-
-//            $isbn = $_POST['isbn'];
-//            $bookName = $_POST['book_name'];
-//            $bookDescription = $_POST['book_name'];
-//            $pageNumber = $_POST['book_name'];
-//            $authorId = (int)$_POST['author_id'];
-//            $categoryId = (int)$_POST['category_id'];
-//            $publisherId = (int)$_POST['publisher_id'];
-//            $quantity = (int)$_POST['quantity'];
-//            $publicationDate = $_POST['date_of_publication'];
-//            $priceSale = (int)$_POST['price_sale'];
-//            $path = "images/";
-//            $tmpName = $_FILES['image']['tmp_name'];
-//            $imageName = $_FILES['image']['name'];
-//            move_uploaded_file($tmpName, $path.$imageName);
-//
-//
-//            $result = $this->productModel->updateBook($isbn,$bookName,$authorId,$categoryId,$publisherId,$quantity,$publicationDate,$priceSale,$imageName);
+            header("location:index.php");
 //            $this->showBookList();
-//            var_dump($result);
+
         }
     }
 
@@ -131,19 +119,23 @@ class ProductController
         }
     }
 
+    /**     Author          **/
+    public function showAuthors(){
+        $authors = $this->authorModel->getAllAuthors();
+//        echo "<pre>";
+//        var_dump($authors);
+        include "src/View/author/authors-list.php";
+    }
+
+    /**     Publisher       */
     public function showPublishers(){
         $publishers = $this->publisherModel->getAllPublishers();
-//        echo "<pre>";
-//        var_dump($publishers);
         include "src/View/book/publishers-list.php";
     }
 
+    /**     Categories      **/
     public function showCategories(){
         $categories = $this->categoryModel->getAllCategories();
-//        echo "<pre>";
-//        foreach ($categories as $category){
-//            var_dump($category['category_name']);
-//        }
         include "src/View/book/categories-list.php";
     }
 

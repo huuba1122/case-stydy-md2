@@ -16,9 +16,6 @@ class ProductModel
         $sql = "SELECT*FROM v_books_details ORDER BY v_books_details.update_date DESC";
         $stml = $this->database->query($sql);
         return $stml->fetchAll();
-//        $sql = "SELECT*FROM books ORDER BY price_sale ASC";
-//        $stml = $this->database->query($sql);
-//        return $stml->fetchAll();
     }
 
     public function productDetails($id){
@@ -62,7 +59,7 @@ class ProductModel
         $stml->bindValue(":price_sale",$priceSale);
         $stml->bindValue(":image",$imageName);
         $stml->execute();
-        var_dump($stml->execute());
+//        var_dump($stml->execute());
 //        return $stml->fetchAll();
     }
 
