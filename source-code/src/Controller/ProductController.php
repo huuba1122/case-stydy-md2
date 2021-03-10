@@ -13,6 +13,7 @@ class ProductController
     protected $publisherModel;
     protected $categoryModel;
     protected $authorModel;
+    protected $pagination;
 
     public function __construct()
     {
@@ -24,10 +25,17 @@ class ProductController
 
     public function showBookList()
     {
-//        $products = $this->productModel->productList();
-//        include_once 'src/View/book/book-list.php';
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-            $products = $this->productModel->productList();
+            $count = $this->productModel->productCountRecord();
+            $totalRecord = (int)$count[0]['total_record'];
+            $currentPage = isset($_REQUEST['pagination']) ? $_REQUEST['pagination'] : 1;
+            $limit = 8;
+            $paramPage = 'index.php?page=pagination';
+            $this->pagination = new PaginationController($currentPage,$limit,$totalRecord,3,$paramPage);
+            $data = $this->pagination->showPagination();
+
+            $start = $this->pagination->getStart();
+            $products = $this->productModel->productBookLimit($start,$limit);
             include 'src/View/book/book-list.php';
         }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $searchName = $_POST['search_name'];
@@ -41,8 +49,6 @@ class ProductController
             }
         }
     }
-
-    /***        show book-list limit    */
 
     public function addBook(){
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
@@ -66,8 +72,7 @@ class ProductController
             $tmpName = $_FILES['image']['tmp_name'];
             $imageName = $_FILES['image']['name'];
             move_uploaded_file($tmpName, $path.$imageName);
-            $this->productModel->addBook($isbn,$bookName,$authorId,$categoryId,$publisherId,$quantity,$publicationDate,$priceSale,$imageName);
-//            $this->showBookList();
+            $this->productModel->addBook($isbn,$bookName,$description,$pageNumber,$authorId,$categoryId,$publisherId,$quantity,$publicationDate,$updateDate,$priceSale,$imageName);
             header("location:index.php");
         }
     }
@@ -95,18 +100,21 @@ class ProductController
             $categoryId = (int)$_REQUEST['category_id'];
             $publisherId = (int)$_REQUEST['publisher_id'];
             $quantity= (int)$_REQUEST['quantity'];
-            $publicationDate= $_REQUEST['year_of_publication'];
+            $publicationDate= $_REQUEST['date_of_publication'];
             $updateDate= $_REQUEST['update_date'];
             $priceSale= $_REQUEST['price_sale'];
             $imageName = $_FILES['image']['name'];
-            if ($bookId != null && $updateDate != null){
+            $path = "images/";
+            $tmpName = $_FILES['image']['tmp_name'];
+            move_uploaded_file($tmpName, $path.$imageName);
+            if (!empty($bookName) && !empty($isbn) && !empty($authorId) && !empty($priceSale) && !empty($publicationDate)){
                 if ($imageName == null){
                     $imageName = $_REQUEST['old_image'];
                 }
+
                 $this->productModel->updateBook($bookId,$isbn,$bookName,$description,$pageNumber,$authorId,$categoryId,$publisherId,$quantity,$publicationDate,$updateDate,$priceSale,$imageName);
             }
             header("location:index.php");
-//            $this->showBookList();
 
         }
     }
@@ -120,12 +128,10 @@ class ProductController
     }
 
     /**     Author          **/
-    public function showAuthors(){
-        $authors = $this->authorModel->getAllAuthors();
-//        echo "<pre>";
-//        var_dump($authors);
-        include "src/View/author/authors-list.php";
-    }
+//    public function showAuthors(){
+//        $authors = $this->authorModel->getAllAuthors();
+//        include "src/View/author/authors-list.php";
+//    }
 
     /**     Publisher       */
     public function showPublishers(){
@@ -134,9 +140,9 @@ class ProductController
     }
 
     /**     Categories      **/
-    public function showCategories(){
-        $categories = $this->categoryModel->getAllCategories();
-        include "src/View/book/categories-list.php";
-    }
+//    public function showCategories(){
+//        $categories = $this->categoryModel->getAllCategories();
+//        include "src/View/book/categories-list.php";
+//    }
 
 }

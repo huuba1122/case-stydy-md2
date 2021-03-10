@@ -25,9 +25,18 @@
 }
 .card-img-top {
     width: 100%;
-    height: 18vw;
+    height: 28vw;
     object-fit: cover;
 }
 .card-book-price{
     color: #0d6efd;
+}
+.add-book{
+    margin-left: 0;
+    margin-right: 0;
+}
+.add-book-des{
+    margin-left: 1vw;
+    margin-right: 1vw;
+    flex-shrink: unset;
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+use mysql_xdevapi\Exception;
 use PDO;
 class ProductModel
 {
@@ -11,11 +12,21 @@ class ProductModel
         $db = new DBConnect();
         $this->database = $db->connect();
     }
+//    public function productList(){
+//        $sql = "SELECT*FROM v_books_list ORDER BY v_books_list.update_date DESC";
+//        $stml = $this->database->query($sql);
+//        return $stml->fetchAll();
+//    }
+    public function productBookLimit($start,$limit){
+            $sql = "SELECT*FROM v_books_list LIMIT $start,$limit";
+            $stmt = $this->database->query($sql);
+            return $stmt->fetchAll();
 
-    public function productList(){
-        $sql = "SELECT*FROM v_books_details ORDER BY v_books_details.update_date DESC";
-        $stml = $this->database->query($sql);
-        return $stml->fetchAll();
+    }
+    public function productCountRecord(){
+        $sql = "SELECT COUNT(book_id) AS total_record FROM v_books_list";
+        $stmt = $this->database->query($sql);
+        return $stmt->fetchAll();
     }
 
     public function productDetails($id){
@@ -26,23 +37,26 @@ class ProductModel
         return $stml->fetchAll();
     }
 
-    public function addBook($isbn, $bookName, $authorId, $categoryId, $publisherId, $quantity, $publicationDate,$priceSale,$imageName){
-        $sql = "INSERT INTO books(isbn,book_name,author_id,category_id,publisher_id,quantity,year_of_publication,price_sale,image) VALUES(:isbn,:book_name,:author_id,:category_id,:publisher_id,:quantity,:year_of_publication,:price_sale,:image)";
-        $stml = $this->database->prepare($sql);
-        $stml->bindValue(":isbn",$isbn);
-        $stml->bindValue(":book_name",$bookName);
-        $stml->bindValue(":author_id",$authorId);
-        $stml->bindValue(":category_id",$categoryId);
-        $stml->bindValue(":publisher_id",$publisherId);
-        $stml->bindValue(":quantity",$quantity);
-        $stml->bindValue(":year_of_publication",$publicationDate);
-        $stml->bindValue(":price_sale",$priceSale);
-        $stml->bindValue(":image",$imageName);
-        $stml->execute();
-        return $stml->fetchAll();
+    public function addBook($isbn, $bookName,$description,$page_number, $authorId, $categoryId, $publisherId, $quantity, $publicationDate,$update_date,$priceSale,$imageName){
+        $sql = "INSERT INTO books(isbn,book_name,description,page_number,author_id,category_id,publisher_id,quantity,year_of_publication,update_date,price_sale,image) VALUES(:isbn,:book_name,:description,:page_number,:author_id,:category_id,:publisher_id,:quantity,:year_of_publication,:update_date,:price_sale,:image)";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindValue(":isbn",$isbn);
+        $stmt->bindValue(":book_name",$bookName);
+        $stmt->bindValue(":description",$description);
+        $stmt->bindValue(":page_number",$page_number);
+        $stmt->bindValue(":author_id",$authorId);
+        $stmt->bindValue(":category_id",$categoryId);
+        $stmt->bindValue(":publisher_id",$publisherId);
+        $stmt->bindValue(":quantity",$quantity);
+        $stmt->bindValue(":year_of_publication",$publicationDate);
+        $stmt->bindValue(":update_date",$update_date);
+        $stmt->bindValue(":price_sale",$priceSale);
+        $stmt->bindValue(":image",$imageName);
+        $stmt->execute();
     }
 
-    public function updateBook( $bookId,$isbn, $bookName, $description, $pageNumber, $authorId, $categoryId, $publisherId, $quantity, $publicationDate, $updateDate,$priceSale,$imageName){
+    public function updateBook( $bookId,$isbn, $bookName, $description, $pageNumber, $authorId, $categoryId, $publisherId, $quantity, $publicationDate, $updateDate,$priceSale,$imageName)
+    {
         $sql = "UPDATE books SET isbn=:isbn,book_name=:book_name,description=:description,page_number=:page_number,author_id=:author_id,category_id=:category_id,publisher_id=:publisher_id,quantity=:quantity,year_of_publication=:year_of_publication,update_date=:update_date,price_sale=:price_sale,image=:image WHERE book_id=:book_id";
         $stml = $this->database->prepare($sql);
         $stml->bindValue(":book_id",$bookId);
@@ -59,8 +73,6 @@ class ProductModel
         $stml->bindValue(":price_sale",$priceSale);
         $stml->bindValue(":image",$imageName);
         $stml->execute();
-//        var_dump($stml->execute());
-//        return $stml->fetchAll();
     }
 
     public function deleteBook($id)

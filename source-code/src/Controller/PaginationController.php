@@ -82,25 +82,18 @@ class PaginationController
         $data = "";
         for ($i = 0; $i < $count; $i++) {
             if ($pagination[$i] === $currentPage) {
-                $data .= '<li class="page-item"><a style="color: aliceblue" href="' . $this->paramPage . '?page=' . $pagination[$i] . '" >' . $pagination[$i] . '</a></li>';
+                $data .= '<li class="page-item"><a class="page-link" href="' . $this->paramPage . '?page=' . $pagination[$i] . '" >' . $pagination[$i] . '</a></li>';
 
             } elseif ($pagination[$i] === '< Previous') {
-                $data .= '<li class="page-item"><a class="page-link" style="color: blue" href="' . $this->paramPage . '?page=' . $previous . '" >< Previous</a></li>';
+                $data .= '<li class="page-item"><a class="page-link"  href="' . $this->paramPage . '?page=' . $previous . '" >< Previous</a></li>';
             } elseif ($pagination[$i] === 'Next >') {
-                $data .= '<li class="page-item"><a class="page-link" style="color: blue" href="' . $this->paramPage . '?page=' . $next . '" >Next></a></li>';
+                $data .= '<li class="page-item"><a class="page-link"  href="' . $this->paramPage . '?page=' . $next . '" >Next></a></li>';
             } else {
-                $data .= '<li class="page-item"><a style="color: blue" href="' . $this->paramPage . '?page=' . $pagination[$i] . '" >' . $pagination[$i] . '</a></li>';
+                $data .= '<li class="page-item"><a class="page-link" href="' . $this->paramPage . '&pagination=' . $pagination[$i] . '" >' . $pagination[$i] . '</a></li>';
             }
         }
         return $data;
     }
 }
 
-//$totalRecord = 200;
-//
-//$currentPage = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
-//$limit = "10";
-//$paramPage = 'demo.php';
-//
-//$pagination = new Pagination($currentPage, $limit, $totalRecord, 10, $paramPage);
 
