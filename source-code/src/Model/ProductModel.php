@@ -12,11 +12,11 @@ class ProductModel
         $db = new DBConnect();
         $this->database = $db->connect();
     }
-//    public function productList(){
-//        $sql = "SELECT*FROM v_books_list ORDER BY v_books_list.update_date DESC";
-//        $stml = $this->database->query($sql);
-//        return $stml->fetchAll();
-//    }
+    public function productList(){
+        $sql = "SELECT*FROM v_books_list ORDER BY v_books_list.update_date DESC";
+        $stmt = $this->database->query($sql);
+        return $stmt->fetchAll();
+    }
     public function productBookLimit($start,$limit){
             $sql = "SELECT*FROM v_books_list LIMIT $start,$limit";
             $stmt = $this->database->query($sql);
@@ -87,5 +87,13 @@ class ProductModel
         $sql ="SELECT * FROM v_books_details WHERE book_name LIKE '%$searchBook%' OR author_name LIKE '%$searchBook%'";
         $stml = $this->database->query($sql);
         return $stml->fetchAll();
+    }
+
+    public function getBookByAuthorId($authorId){
+        $sql = "SELECT * FROM v_books_list WHERE author_id =:author_id";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':author_id',$authorId);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }

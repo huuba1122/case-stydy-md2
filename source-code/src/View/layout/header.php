@@ -15,10 +15,10 @@
                             Quản lý sách
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="index.php?page=book-list" class="list-group-item list-group-item-action list-group-item-primary">Danh mục sách</a></li>
+                            <li><a href="index.php?page=books-table" class="list-group-item list-group-item-action list-group-item-primary">Danh mục sách</a></li>
                             <li><a href="index.php?page=add-book" class="list-group-item list-group-item-action list-group-item-secondary">Thêm sách mới</a></li>
                             <li><a href="index.php?page=publishers" class="list-group-item list-group-item-action list-group-item-info">Nhà xuất bản</a></li>
-                            <li><a class="list-group-item list-group-item-action list-group-item-info" href="index.php?page=authors">Tác giả</a></li>
+<!--                            <li><a class="list-group-item list-group-item-action list-group-item-info" href="index.php?page=authors">Tác giả</a></li>-->
                             <li><a class="list-group-item list-group-item-action list-group-item-info" href="index.php?page=categories">Thể loại</a></li>
                         </ul>
                     </li>
@@ -42,11 +42,11 @@
                             Quản lý hóa đơn
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="#" class="list-group-item list-group-item-action list-group-item-primary">Phiếu nhập</a></li>
-                            <li><a href="index.php?page=hoa-don" class="list-group-item list-group-item-action list-group-item-secondary">Hóa đơn bán hàng</a></li>
-                            <li><a href="#" class="list-group-item list-group-item-action list-group-item-success">Khách hàng</a></li>
-                            <li><a href="#" class="list-group-item list-group-item-action list-group-item-danger">Nhân viên</a></li>
-                            <li><a href="#" class="list-group-item list-group-item-action list-group-item-warning">Nhà cung cấp</a></li>
+                            <li><a href="index.php?page=purchase" class="list-group-item list-group-item-action list-group-item-primary">Phiếu nhập</a></li>
+                            <li><a href="index.php?page=orders-list" class="list-group-item list-group-item-action list-group-item-secondary">Hóa đơn bán hàng</a></li>
+                            <li><a href="index.php?page=customers" class="list-group-item list-group-item-action list-group-item-success">Khách hàng</a></li>
+                            <li><a href="index.php?page=employees" class="list-group-item list-group-item-action list-group-item-danger">Nhân viên</a></li>
+                            <li><a href="index.php?page=suppliers" class="list-group-item list-group-item-action list-group-item-warning">Nhà cung cấp</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -75,7 +75,7 @@ require "src/View/layout/header.php";
                 <div class="mb-3 col-3">
                     <label for="old-img" class="form-label text-primary">Ảnh cũ</label>
 <!--                    <input name="image" class="form-control" type="file" id="formFile">-->
-                    <img class="card-img-top img-fluid" src="images/<?php echo $product[0]['image'] ?>" id="old-img">
+                    <img style="height: 250px" class="card-img-top img-fluid" src="images/<?php echo $product[0]['image'] ?>" id="old-img">
 <!--                    <input type="hidden" name="old_image" value="--><?php //echo $product[0]['image'] ?><!--">-->
                 </div>
             </div>

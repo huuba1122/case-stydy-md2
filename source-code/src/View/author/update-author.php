@@ -11,7 +11,7 @@ require "src/View/layout/header.php";
             <div class="mb-3 col-12">
                 <label for="add-author-name" class="form-label text-primary text-start">Tên tác giả</label>
                 <input name="author_name" type="text" class="form-control" id="add-author-name" required value="<?php echo $author[0]['author_name'] ?>">
-                <input name="author_id" type="text" class="form-control" id="add-author-name" required value="<?php echo $author[0]['author_id'] ?>">
+                <input name="author_id" type="hidden" class="form-control" id="add-author-name" required value="<?php echo $author[0]['author_id'] ?>">
             </div>
             <div class="mb-3 col-12">
                 <label for="add-author-date" class="form-label text-primary">Năm sinh - Năm chết</label>
@@ -24,7 +24,7 @@ require "src/View/layout/header.php";
             <div class="mb-3 col-12">
                 <label for="formFile" class="form-label text-primary">Ảnh</label>
                 <input name="author_image" class="form-control" type="file" id="formFile">
-                <input name="old_image" class="form-control" type="text" value="<?php echo $author[0]['website'] ?>">
+                <input name="old_image" class="form-control" type="hidden" value="<?php echo $author[0]['author_image'] ?>">
             </div>
             <div class="row mb-3">
                 <label for="add-des" class="form-label text-primary text-start">Giới thiệu tác giả</label>

@@ -24,6 +24,8 @@ class AuthorController
         $id = (int)$_REQUEST['author_id'];
 //        echo "<pre>";
         $author = $this->authorModel->getAuthorById($id);
+        $authorBooks = $this->productModel->getBookByAuthorId($id);
+//        var_dump($authorBooks);
         include "src/View/author/author-details.php";
 //        var_dump($author);
     }

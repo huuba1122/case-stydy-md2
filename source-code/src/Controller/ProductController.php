@@ -23,6 +23,13 @@ class ProductController
         $this->authorModel = new AuthorModel();
     }
 
+    public function showBooksTable(){
+        $books = $this->productModel->productList();
+//        echo "<pre>";
+//        var_dump($books);
+        include 'src/View/book/books-table.php';
+    }
+
     public function showBookList()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){

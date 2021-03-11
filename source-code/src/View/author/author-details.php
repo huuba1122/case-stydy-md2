@@ -23,8 +23,12 @@
                                     <th colspan="2"><h5 class="card-title text-center"><?php echo $author[0]['author_name'] ?></h5></th>
                                 </tr>
                                 <tr>
+                                    <th><p class="card-text">Năm sinh</p></th>
+                                    <th ><p class="card-text"><?php echo $author[0]['birth_death'] ?></p></th>
+                                </tr>
+                                <tr>
                                     <th><p class="card-text">Website</p></th>
-                                    <td><p class="card-text"><a style="text-decoration: none" href="<?php echo $author[0]['website'] ?>"><?php echo $author[0]['website'] ?></a></p></td>
+                                    <td><p class="card-text "><a style="text-decoration: none" href="<?php echo $author[0]['website'] ?>"><?php echo $author[0]['website'] ?></a></p></td>
                                 </tr>
                                 <tr>
                                     <th><p class="card-text">Thông tin</p></th>
@@ -36,6 +40,31 @@
                 </div>
             </div>
     </div>
+<table class="table table-striped " style="border-collapse: unset">
+    <tr>
+        <th>Tên sách</th>
+        <th>Tác giả</th>
+        <th>Thể loại</th>
+        <th>giá</th>
+        <th>Ảnh</th>
+        <th></th>
+    </tr>
+    <?php foreach ($authorBooks as $key =>$authorBook): ?>
+        <tr>
+            <td><a style="text-decoration: none" href="index.php?page=book-details&id=<?php echo $authorBook['book_id'] ?>"><?php echo $authorBook['book_name'] ?></a></td>
+            <td><?php echo $authorBook['author_name'] ?></td>
+            <td><?php echo $authorBook['category_name'] ?></td>
+            <td><?php echo $authorBook['price_sale'] ?></td>
+            <td><img src="images/<?php echo $authorBook['image'] ?>" alt="" style="width: 50px; height: 50px"></td>
+            <td style="text-align: center">
+                <div>
+                    <a  style="margin: 0 0.5rem" class="btn btn-warning btn-sm" href="index.php?page=update-book&id=<?php echo $authorBook['book_id'] ?>" >update</a>
+                    <a  onclick="return confirm(' Xác nhận đầu sách <?php echo $authorBook['book_name'] ?>')" style="margin: 0 0.5rem" class="btn btn-danger btn-sm" href="index.php?page=delete-book&id=<?php echo $authorBook['book_id'] ?>" >delete</a>
+                </div>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
 <?php
 require "src/View/layout/footer.php";
 ?>
