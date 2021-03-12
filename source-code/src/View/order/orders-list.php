@@ -9,15 +9,15 @@ require "src/View/layout/header.php";
     <table class="table table-striped " style="border-collapse: unset">
         <tr>
             <th>order_id</th>
-            <th>khach hang</th>
-            <th>nhan vien</th>
-            <th>ngay</th>
-            <th>tien</th>
+            <th>Khách hàng</th>
+            <th>Nhân viên</th>
+            <th>Ngày mua</th>
+            <th>Tổng tiền</th>
             <th></th>
         </tr>
         <?php foreach ($orders as $key => $order): ?>
             <tr class="col">
-                <td class="col-1"><a style="text-decoration: none" href="index.php?page=order-details&order-detail-id=<?php echo $order['order_id'] ?>">OD-<?php echo $order['order_id'] ?></a></td>
+                <td class="col-1"><a style="text-decoration: none" href="index.php?page=order-details&order_id=<?php echo $order['order_id'] ?>">OD-<?php echo $order['order_id'] ?></a></td>
                 <td class="col-3"><?php echo $order['customer_name'] ?></td>
                 <td class="col-3"><?php echo $order['employee_name'] ?></td>
                 <td class="col-2"><?php echo $order['order_date'] ?></td>

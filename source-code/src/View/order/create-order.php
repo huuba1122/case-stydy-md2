@@ -2,14 +2,14 @@
 require "src/View/layout/header.php";
 ?>
 
-<div class="content row col-12">
+<div class="content row col-12" >
     <form method="post" action="index.php?page=create-order">
 
         <!--        form bootstrap      -->
-        <div class="table-responsive row">
-            <h1 class="text-primary text-center">Nhập thông tin</h1>
-            <div class="mb-3 col-4">
-                <div class="mb-3 col-4">
+<!--        <div class="table-responsive row">-->
+            <h1 class="text-primary text-center">Hóa đơn</h1>
+            <div class="mb-3 col row" style="margin-top: 30px">
+                <div class="mb-3 col-6">
                     <label for="add-customer" class="form-label text-primary text-start">Khách hàng</label>
                     <select name="customer_id" class="form-select" aria-label="Default select example" id="add-customer">
                         <option selected>----</option>
@@ -23,7 +23,7 @@ require "src/View/layout/header.php";
 <!--                    <input name="employee_id" type="number" class="form-control" id="add-name" required>-->
 <!--                </div>-->
                 <input name="order_date" type="hidden" class="form-control" id="add-name" value="<?php echo date('Y-m-d') ?>">
-                <div class="mb-3 col-4">
+                <div class="mb-3 col-6">
                     <label for="add-employee" class="form-label text-primary text-start">Nhân viên</label>
                     <select name="employee_id" class="form-select" aria-label="Default select example" id="add-employee">
                         <option selected>----</option>
@@ -33,10 +33,10 @@ require "src/View/layout/header.php";
                     </select>
                 </div>
             </div>
-            <div class=" mb-3 col-8">
+            <div class=" mb-3 col row" >
                 <label class="form-label text-primary text-start" >Chọn sách</label>
                 <?php foreach ($books as $key => $book): ?>
-                    <div class="">
+                    <div class="col col-4" style="margin-bottom: 5px">
                         <input name="books[]" class="form-check-input" type="checkbox" value="<?php echo $book['book_id'] ?>" id="<?php echo $book['book_id'] ?>">
                         <label class="form-check-label" for="<?php echo $book['book_id'] ?>">
                             <?php echo $book['book_name'] ?>
@@ -44,7 +44,7 @@ require "src/View/layout/header.php";
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="row add-book add-book-des">
+            <div class="row add-book" style="margin-top: 50px;">
                 <button type="submit" class="btn btn-primary col-2">Tạo hóa đơn</button>
             </div>
 

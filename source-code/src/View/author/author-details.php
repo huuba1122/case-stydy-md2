@@ -8,7 +8,7 @@
                     <div class="col-lg-3 col-md-6 mb-3 mt-6" style="margin-top: 1.2vw">
                         <div>
 
-                            <img class="card-img-top img-fluid" src="images/<?php echo $author[0]['author_image'] ?>" alt="...">
+                            <img class="card-img-top img-fluid" src="images/<?php echo $author[0]['author_image'] ?>" alt="..." style="height: 350px">
                         </div>
                         <div class="row add-book" style="margin-top: 1.5vw">
                             <div class="mb-3 col-12 d-grid gap-2">

@@ -26,7 +26,7 @@ require "src/View/layout/header.php";
     </form>
 </div>
 <?php
-require "src/View/layout/pagination.php";
-require "src/View/layout/footer.php";
+//require "src/View/layout/pagination.php";
+//require "src/View/layout/footer.php";
 ?>
 

@@ -37,27 +37,9 @@ $orderController = new OrderController();
 
 <!--           bootstrap         -->
 <div class="container container-fluid">
-        <!--        side bar           -->
-<!--        <div class="row sidebar col-lg-3">-->
-<!--            <div class="col ">-->
-<!--                <div class="categories">-->
-<!--                    <div class="list-group">-->
-<!--                        <button  class=" btn btn-dark">A simple default list group item</button>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light</a>-->
-<!--                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
 
-        <!--      my-content      -->
-<!--        <div class="row my-content col" >-->
+<!--              my-content-->
+        <div class="row my-content col" >
 
             <?php
             switch ($page){
@@ -123,6 +105,9 @@ $orderController = new OrderController();
                     break;
                 case 'delete-order':
                     $orderController->deleteOrderById();
+                    break;
+                case 'order-details':
+                    $orderController->getOrderDetailById();
                     break;
                 default:
                     $productController->showBookList();

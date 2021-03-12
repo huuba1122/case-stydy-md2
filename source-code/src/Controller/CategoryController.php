@@ -31,6 +31,7 @@ class CategoryController
             if (!empty($categoryName) && !empty($categoryWeb) && !empty($categoryDes)){
                 $this->categoryModel->addCategory($categoryName,$categoryWeb,$categoryDes);
             }
+            header("location:index.php?page=categories");
         }
     }
 

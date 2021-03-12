@@ -18,6 +18,14 @@ class OrderModel
         return $stmt->fetchAll();
     }
 
+    public function getOrderDetails($orderId){
+        $sql = "SELECT*FROM v_orders_books WHERE order_id =:order_id";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':order_id',$orderId);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function getAllOrderLast(){
         $sql = "SELECT*FROM orders ORDER BY order_id DESC LIMIT 1";
         $stmt = $this->database->query($sql);

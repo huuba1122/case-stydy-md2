@@ -25,20 +25,20 @@
     <!--      my-content      -->
     <div class="row my-content col" >
         <?php foreach ($products as $key => $product) : ?>
-            <div class="col-lg-3 col-md-6 mb-3">
+            <div class="col-lg-2 col-md-6 mb-3">
                 <div class="card h-100">
                     <a href="index.php?page=book-details&id=<?php echo $product['book_id'] ?>"><img class="card-img-top img-fluid" src="images/<?php echo $product['image'] ?>" alt=""></a>
 
                     <div class="card-body text-center">
-                        <h5 class="card-title card-book"><?php echo $product['book_name'] ?></h5>
-                        <h6 class="card-title card-book"><?php echo $product['author_name'] ?></h6>
-                        <h6 class="card-title card-book card-book-price"><?php echo $product['price_sale'].' VND' ?></h6>
+                        <p class="card-title card-book text-break" style="font-size: 12px"><?php echo $product['book_name'] ?></p>
+                        <p class="card-title card-book text-break" style="font-size: 12px"><?php echo $product['author_name'] ?></p>
+                        <p class="card-title card-book card-book-price "><?php echo $product['price_sale'].' VND' ?></p>
                         <div class="row add-book">
                             <div class="mb-3 col-6 d-grid gap-2">
-                                <a  class="btn btn-warning" href="index.php?page=update-book&id=<?php echo $product['book_id'] ?>" >update</a>
+                                <a  class="btn btn-warning btn-sm" href="index.php?page=update-book&id=<?php echo $product['book_id'] ?>" >update</a>
                             </div>
                             <div class="mb-3 col-6 d-grid gap-2">
-                                <a  class="btn btn-danger" onclick="return confirm(' co muon xoa dau sach <?php echo $product['book_name'] ?> ko?')" href="index.php?page=delete-book&id=<?php echo $product['book_id'] ?>" >delete</a>
+                                <a  class="btn btn-danger btn-sm" onclick="return confirm(' co muon xoa dau sach <?php echo $product['book_name'] ?> ko?')" href="index.php?page=delete-book&id=<?php echo $product['book_id'] ?>" >delete</a>
                             </div>
                         </div>
                     </div>

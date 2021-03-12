@@ -64,4 +64,10 @@ class OrderController
         }
         header('location:index.php?page=orders-list');
     }
+
+    public function getOrderDetailById(){
+        $orderDetailId = (int)$_REQUEST['order_id'];
+        $orderDetails = $this->orderModel->getOrderDetails($orderDetailId);
+        include "src/View/order/order-details.php";
+    }
 }

@@ -6,7 +6,7 @@ require "src/View/layout/header.php";
     <table class="table table-striped " style="border-collapse: unset">
         <tr>
             <th>Tên tác giả</th>
-            <th>Năm sinh - Năm mất</th>
+            <th>Năm sinh</th>
             <th>website</th>
             <th>Ảnh</th>
             <th></th>
@@ -15,7 +15,7 @@ require "src/View/layout/header.php";
             <tr>
                 <td><a style="text-decoration: none" href="index.php?page=author-details&author_id=<?php echo $author['author_id'] ?>"><?php echo $author['author_name'] ?></a></td>
                 <td><?php echo $author['birth_death'] ?></td>
-                <td><a style="text-decoration: none" href="<?php echo $author['website'] ?>"><?php echo $author['website'] ?></a></td>
+                <td><a target="_blank" style="text-decoration: none" href="<?php echo $author['website'] ?>"><?php echo $author['website'] ?></a></td>
                 <td><img src="images/<?php echo $author['author_image'] ?>" alt="" style="width: 50px; height: 50px"></td>
 <!--                <td>--><?php //echo $author['description'] ?><!--</td>-->
                 <td style="text-align: center">

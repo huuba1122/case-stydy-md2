@@ -25,8 +25,6 @@ class ProductController
 
     public function showBooksTable(){
         $books = $this->productModel->productList();
-//        echo "<pre>";
-//        var_dump($books);
         include 'src/View/book/books-table.php';
     }
 
@@ -36,7 +34,7 @@ class ProductController
             $count = $this->productModel->productCountRecord();
             $totalRecord = (int)$count[0]['total_record'];
             $currentPage = isset($_REQUEST['pagination']) ? $_REQUEST['pagination'] : 1;
-            $limit = 8;
+            $limit = 12;
             $paramPage = 'index.php?page=pagination';
             $this->pagination = new PaginationController($currentPage,$limit,$totalRecord,3,$paramPage);
             $data = $this->pagination->showPagination();
@@ -134,22 +132,10 @@ class ProductController
         }
     }
 
-    /**     Author          **/
-//    public function showAuthors(){
-//        $authors = $this->authorModel->getAllAuthors();
-//        include "src/View/author/authors-list.php";
-//    }
-
     /**     Publisher       */
     public function showPublishers(){
         $publishers = $this->publisherModel->getAllPublishers();
-        include "src/View/book/publishers-list.php";
+        include "src/View/publisher/publisher-list.php";
     }
-
-    /**     Categories      **/
-//    public function showCategories(){
-//        $categories = $this->categoryModel->getAllCategories();
-//        include "src/View/book/categories-list.php";
-//    }
 
 }
